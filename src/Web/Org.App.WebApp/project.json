@@ -28,7 +28,16 @@
   },
 
   "frameworks": {
-    "net462": {}
+    "net462": {
+      "dependencies": {
+        "Org.App.BusinessService": {
+          "target": "project"
+        },
+        "Org.App.DataService": {
+          "target": "project"
+        }
+      }
+    }
   },
 
   "buildOptions": {
