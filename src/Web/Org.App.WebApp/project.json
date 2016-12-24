@@ -1,4 +1,4 @@
-﻿{
+{
   "dependencies": {
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
@@ -18,7 +18,7 @@
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
-    "NJet.Interservice": "1.0.0-beta-1"
+    "NJet.Interservice": "1.0.0-beta-2"
   },
 
   "tools": {
@@ -28,7 +28,7 @@
   },
 
   "frameworks": {
-    "net462": { }
+    "net462": {}
   },
 
   "buildOptions": {
