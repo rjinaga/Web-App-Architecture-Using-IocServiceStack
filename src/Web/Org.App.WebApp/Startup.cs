@@ -67,6 +67,8 @@ namespace NjetInterserviceWebApplication
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            RegisterServices();
         }
 
         private void RegisterServices()
