@@ -12,22 +12,17 @@ namespace Org.App.Data.EntityFramework
     using System;
     using System.Collections.Generic;
     
-    public partial class Customer
+    public partial class MemberRole
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer()
-        {
-            this.Sales = new HashSet<Sale>();
-        }
-    
-        public int IdCustomer { get; set; }
-        public string Name { get; set; }
-        public Nullable<int> IdAddress { get; set; }
+        public int IdMemberRole { get; set; }
+        public int IdMembership { get; set; }
+        public int IdRole { get; set; }
         public System.DateTime CreatedDate { get; set; }
         public int CreatedBy { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public Nullable<int> UpdatedBy { get; set; }
     
-        public virtual Address Address { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sale> Sales { get; set; }
+        public virtual Membership Membership { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

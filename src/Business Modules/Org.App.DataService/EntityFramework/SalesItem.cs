@@ -20,6 +20,8 @@ namespace Org.App.Data.EntityFramework
         public int Quantity { get; set; }
         public decimal ItemPrice { get; set; }
         public decimal Amount { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
     
         public virtual Product Product { get; set; }
         public virtual Sale Sale { get; set; }

@@ -18,6 +18,7 @@ namespace Org.App.Data.EntityFramework
         public Address()
         {
             this.Customers = new HashSet<Customer>();
+            this.Memberships = new HashSet<Membership>();
         }
     
         public int IdAddress { get; set; }
@@ -33,5 +34,7 @@ namespace Org.App.Data.EntityFramework
         public virtual State State { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Membership> Memberships { get; set; }
     }
 }

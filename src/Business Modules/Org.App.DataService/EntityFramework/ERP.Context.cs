@@ -33,5 +33,8 @@ namespace Org.App.Data.EntityFramework
         public virtual DbSet<Sale> Sales { get; set; }
         public virtual DbSet<SalesItem> SalesItems { get; set; }
         public virtual DbSet<State> States { get; set; }
+        public virtual DbSet<MemberRole> MemberRoles { get; set; }
+        public virtual DbSet<Membership> Memberships { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
     }
 }
