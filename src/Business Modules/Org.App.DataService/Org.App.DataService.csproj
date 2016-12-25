@@ -30,12 +30,23 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NJet.Interservice, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a50a726362792873, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\NJet.Interservice.1.0.0-beta-2\lib\net462\NJet.Interservice.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,13 +55,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="EntityFramework\MemberRole.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Membership.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Role.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\CustomerRepository.cs" />
+    <Compile Include="Repository\SalesRepository.cs" />
+    <Compile Include="EntityFramework\Address.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Country.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Customer.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\C__RefactorLog.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\ERP.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERP.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\ERP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\ERP.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ERP.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Product.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\Sale.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\SalesItem.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework\State.cs">
+      <DependentUpon>ERP.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="EntityFramework\" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="EntityFramework\ERP.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ERP.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="EntityFramework\ERP.edmx.diagram">
+      <DependentUpon>ERP.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -63,6 +128,22 @@
       <Name>Org.App.Core.Models</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EntityFramework\ERP.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ERP.edmx</DependentUpon>
+      <LastGenOutput>ERP.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EntityFramework\ERP.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ERP.edmx</DependentUpon>
+      <LastGenOutput>ERP.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

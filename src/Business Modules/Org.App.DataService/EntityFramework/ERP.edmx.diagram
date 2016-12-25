@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6f80bec45a474424abd6eb925f29efc8" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.C__RefactorLog" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Address" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Country" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Customer" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Product" Width="1.5" PointX="7.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Sale" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SalesItem" Width="1.5" PointX="9.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.State" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Address_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Address_State" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Customer_Address" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Sales_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SalesItems_Product" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_SalesItems_Sales" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.MemberRole" Width="1.5" PointX="10.5" PointY="5.25" />
+        <EntityTypeShape EntityType="Model.Membership" Width="1.5" PointX="5.25" PointY="5.25" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="8.25" PointY="8.75" />
+        <AssociationConnector Association="Model.FK_Membership_Address" />
+        <AssociationConnector Association="Model.FK_MemberRoles_Membership" />
+        <AssociationConnector Association="Model.FK_MemberRoles_Roles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
