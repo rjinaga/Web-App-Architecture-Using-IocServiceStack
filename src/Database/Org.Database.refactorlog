@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="a1fc25eb-4a84-4cb5-8fa4-0c2208d677d6" ChangeDateTime="12/24/2016 15:48:30">
+    <Property Name="ElementName" Value="[dbo].[Customer].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Customer]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdCustomer" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="f4ac646d-a0b1-4da5-86ae-ba75981548bd" ChangeDateTime="12/24/2016 15:48:59">
+    <Property Name="ElementName" Value="[dbo].[Address].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Address]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdAddress" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7c837476-d397-40ee-9ebb-8200b9436c97" ChangeDateTime="12/24/2016 15:51:32">
+    <Property Name="ElementName" Value="[dbo].[Product].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Product]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdProduct" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="71d278d8-b8dc-430a-814d-ccb1e0d02c5b" ChangeDateTime="12/24/2016 15:53:47">
+    <Property Name="ElementName" Value="[dbo].[Sales].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Sales]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdSales" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="51185eb6-8d42-4d89-8250-630eaeeb6dd4" ChangeDateTime="12/24/2016 15:55:26">
+    <Property Name="ElementName" Value="[dbo].[Sales].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Sales]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Amount" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7922bf96-f7e7-4228-9ff4-742ba3bac587" ChangeDateTime="12/24/2016 15:58:25">
+    <Property Name="ElementName" Value="[dbo].[SalesItems].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SalesItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdSalesItem" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="dcc4862a-ed9f-415f-9c94-542d16e8fa34" ChangeDateTime="12/24/2016 16:01:00">
+    <Property Name="ElementName" Value="[dbo].[SalesItems].[TotalAmount]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SalesItems]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Amount" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="a5df4d3d-19d9-4a54-a923-7f7bcab72999" ChangeDateTime="12/24/2016 16:03:16">
+    <Property Name="ElementName" Value="[dbo].[Sales].[Amount]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Sales]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="IdCustomer" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="cc0952f4-c551-4e6f-88e5-ea1a9e131f7c" ChangeDateTime="12/24/2016 16:03:26">
+    <Property Name="ElementName" Value="[dbo].[Sales].[CreatedDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[Sales]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Amount" />
+  </Operation>
+</Operations>
