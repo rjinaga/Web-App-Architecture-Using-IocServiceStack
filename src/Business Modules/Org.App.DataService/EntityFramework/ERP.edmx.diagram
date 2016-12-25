@@ -19,6 +19,12 @@
         <AssociationConnector Association="Model.FK_Sales_Customer" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_SalesItems_Product" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_SalesItems_Sales" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.MemberRole" Width="1.5" PointX="10.5" PointY="5.25" />
+        <EntityTypeShape EntityType="Model.Membership" Width="1.5" PointX="5.25" PointY="5.25" />
+        <EntityTypeShape EntityType="Model.Role" Width="1.5" PointX="8.25" PointY="8.75" />
+        <AssociationConnector Association="Model.FK_Membership_Address" />
+        <AssociationConnector Association="Model.FK_MemberRoles_Membership" />
+        <AssociationConnector Association="Model.FK_MemberRoles_Roles" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

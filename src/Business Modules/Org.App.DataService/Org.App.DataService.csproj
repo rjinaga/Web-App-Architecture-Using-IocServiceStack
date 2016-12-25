@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\SalesRepository.cs" />
     <Compile Include="EntityFramework\Address.cs">
       <DependentUpon>ERP.tt</DependentUpon>

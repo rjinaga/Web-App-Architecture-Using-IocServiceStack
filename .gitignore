@@ -241,3 +241,5 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /src/Web/Org.App.WebApp
+/src/Business Modules/Org.App.DataService/Repository
+/src/Core Modules/Org.App.Core.Data/Contracts

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__RefactorLog">
           <Key>
             <PropertyRef Name="OperationKey" />
@@ -38,6 +38,32 @@
           <Property Name="IdCustomer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="250" />
           <Property Name="IdAddress" Type="int" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MemberRoles">
+          <Key>
+            <PropertyRef Name="IdMemberRole" />
+          </Key>
+          <Property Name="IdMemberRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdMembership" Type="int" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Membership">
+          <Key>
+            <PropertyRef Name="IdMembership" />
+          </Key>
+          <Property Name="IdMembership" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IdAddress" Type="int" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -46,6 +72,16 @@
           <Property Name="IdProduct" Type="int" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <EntityType Name="Sales">
           <Key>
@@ -54,6 +90,8 @@
           <Property Name="IdSales" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdCustomer" Type="int" Nullable="false" />
           <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
         </EntityType>
         <EntityType Name="SalesItem">
           <Key>
@@ -65,6 +103,8 @@
           <Property Name="Quantity" Type="int" Nullable="false" />
           <Property Name="ItemPrice" Type="money" Nullable="false" />
           <Property Name="Amount" Type="money" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="CreatedBy" Type="int" />
         </EntityType>
         <EntityType Name="State">
           <Key>
@@ -105,6 +145,42 @@
               <PropertyRef Name="IdAddress" />
             </Principal>
             <Dependent Role="Customer">
+              <PropertyRef Name="IdAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberRoles_Membership">
+          <End Role="Membership" Type="Self.Membership" Multiplicity="1" />
+          <End Role="MemberRoles" Type="Self.MemberRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membership">
+              <PropertyRef Name="IdMembership" />
+            </Principal>
+            <Dependent Role="MemberRoles">
+              <PropertyRef Name="IdMembership" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberRoles_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="MemberRoles" Type="Self.MemberRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="MemberRoles">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Membership_Address">
+          <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
+          <End Role="Membership" Type="Self.Membership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="IdAddress" />
+            </Principal>
+            <Dependent Role="Membership">
               <PropertyRef Name="IdAddress" />
             </Dependent>
           </ReferentialConstraint>
@@ -150,7 +226,10 @@
           <EntitySet Name="Address" EntityType="Self.Address" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MemberRoles" EntityType="Self.MemberRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Membership" EntityType="Self.Membership" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sales" EntityType="Self.Sales" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SalesItem" EntityType="Self.SalesItem" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
@@ -166,6 +245,18 @@
             <End Role="Address" EntitySet="Address" />
             <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
+          <AssociationSet Name="FK_MemberRoles_Membership" Association="Self.FK_MemberRoles_Membership">
+            <End Role="Membership" EntitySet="Membership" />
+            <End Role="MemberRoles" EntitySet="MemberRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberRoles_Roles" Association="Self.FK_MemberRoles_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="MemberRoles" EntitySet="MemberRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Membership_Address" Association="Self.FK_Membership_Address">
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Membership" EntitySet="Membership" />
+          </AssociationSet>
           <AssociationSet Name="FK_Sales_Customer" Association="Self.FK_Sales_Customer">
             <End Role="Customer" EntitySet="Customer" />
             <End Role="Sales" EntitySet="Sales" />
@@ -179,8 +270,7 @@
             <End Role="SalesItem" EntitySet="SalesItem" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -205,6 +295,7 @@
           <NavigationProperty Name="Country" Relationship="Self.FK_Address_Country" FromRole="Address" ToRole="Country" />
           <NavigationProperty Name="State" Relationship="Self.FK_Address_State" FromRole="Address" ToRole="State" />
           <NavigationProperty Name="Customers" Relationship="Self.FK_Customer_Address" FromRole="Address" ToRole="Customer" />
+          <NavigationProperty Name="Memberships" Relationship="Model.FK_Membership_Address" FromRole="Address" ToRole="Membership" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -223,6 +314,8 @@
           <Property Name="IdAddress" Type="Int32" />
           <NavigationProperty Name="Address" Relationship="Self.FK_Customer_Address" FromRole="Customer" ToRole="Address" />
           <NavigationProperty Name="Sales" Relationship="Self.FK_Sales_Customer" FromRole="Customer" ToRole="Sales" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -232,6 +325,8 @@
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="SalesItems" Relationship="Self.FK_SalesItems_Product" FromRole="Product" ToRole="SalesItem" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
         </EntityType>
         <EntityType Name="Sale">
           <Key>
@@ -242,6 +337,8 @@
           <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_Sales_Customer" FromRole="Sales" ToRole="Customer" />
           <NavigationProperty Name="SalesItems" Relationship="Self.FK_SalesItems_Sales" FromRole="Sales" ToRole="SalesItem" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
         </EntityType>
         <EntityType Name="SalesItem">
           <Key>
@@ -255,6 +352,8 @@
           <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <NavigationProperty Name="Product" Relationship="Self.FK_SalesItems_Product" FromRole="SalesItem" ToRole="Product" />
           <NavigationProperty Name="Sale" Relationship="Self.FK_SalesItems_Sales" FromRole="SalesItem" ToRole="Sales" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
         </EntityType>
         <EntityType Name="State">
           <Key>
@@ -369,7 +468,95 @@
             <End Role="Sales" EntitySet="Sales" />
             <End Role="SalesItem" EntitySet="SalesItems" />
           </AssociationSet>
+          <EntitySet Name="MemberRoles" EntityType="Model.MemberRole" />
+          <EntitySet Name="Memberships" EntityType="Model.Membership" />
+          <EntitySet Name="Roles" EntityType="Model.Role" />
+          <AssociationSet Name="FK_Membership_Address" Association="Model.FK_Membership_Address">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Membership" EntitySet="Memberships" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberRoles_Membership" Association="Model.FK_MemberRoles_Membership">
+            <End Role="Membership" EntitySet="Memberships" />
+            <End Role="MemberRole" EntitySet="MemberRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MemberRoles_Roles" Association="Model.FK_MemberRoles_Roles">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="MemberRole" EntitySet="MemberRoles" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="MemberRole">
+          <Key>
+            <PropertyRef Name="IdMemberRole" />
+          </Key>
+          <Property Name="IdMemberRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdMembership" Type="Int32" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <NavigationProperty Name="Membership" Relationship="Model.FK_MemberRoles_Membership" FromRole="MemberRole" ToRole="Membership" />
+          <NavigationProperty Name="Role" Relationship="Model.FK_MemberRoles_Roles" FromRole="MemberRole" ToRole="Role" />
+        </EntityType>
+        <EntityType Name="Membership">
+          <Key>
+            <PropertyRef Name="IdMembership" />
+          </Key>
+          <Property Name="IdMembership" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdAddress" Type="Int32" />
+          <NavigationProperty Name="Address" Relationship="Model.FK_Membership_Address" FromRole="Membership" ToRole="Address" />
+          <NavigationProperty Name="MemberRoles" Relationship="Model.FK_MemberRoles_Membership" FromRole="Membership" ToRole="MemberRole" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="MemberRoles" Relationship="Model.FK_MemberRoles_Roles" FromRole="Role" ToRole="MemberRole" />
+        </EntityType>
+        <Association Name="FK_Membership_Address">
+          <End Type="Model.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="Model.Membership" Role="Membership" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="IdAddress" />
+            </Principal>
+            <Dependent Role="Membership">
+              <PropertyRef Name="IdAddress" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberRoles_Membership">
+          <End Type="Model.Membership" Role="Membership" Multiplicity="1" />
+          <End Type="Model.MemberRole" Role="MemberRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Membership">
+              <PropertyRef Name="IdMembership" />
+            </Principal>
+            <Dependent Role="MemberRole">
+              <PropertyRef Name="IdMembership" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MemberRoles_Roles">
+          <End Type="Model.Role" Role="Role" Multiplicity="1" />
+          <End Type="Model.MemberRole" Role="MemberRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="MemberRole">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -408,6 +595,8 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="Model.Customer">
               <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="IdCustomer" ColumnName="IdCustomer" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="IdAddress" ColumnName="IdAddress" />
@@ -417,6 +606,8 @@
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="Model.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
@@ -426,6 +617,8 @@
           <EntitySetMapping Name="Sales">
             <EntityTypeMapping TypeName="Model.Sale">
               <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="IdSales" ColumnName="IdSales" />
                 <ScalarProperty Name="IdCustomer" ColumnName="IdCustomer" />
                 <ScalarProperty Name="Amount" ColumnName="Amount" />
@@ -435,6 +628,8 @@
           <EntitySetMapping Name="SalesItems">
             <EntityTypeMapping TypeName="Model.SalesItem">
               <MappingFragment StoreEntitySet="SalesItem">
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
                 <ScalarProperty Name="IdSalesItem" ColumnName="IdSalesItem" />
                 <ScalarProperty Name="IdSales" ColumnName="IdSales" />
                 <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
@@ -449,6 +644,41 @@
               <MappingFragment StoreEntitySet="State">
                 <ScalarProperty Name="StateCode" ColumnName="StateCode" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MemberRoles">
+            <EntityTypeMapping TypeName="Model.MemberRole">
+              <MappingFragment StoreEntitySet="MemberRoles">
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="IdMembership" ColumnName="IdMembership" />
+                <ScalarProperty Name="IdMemberRole" ColumnName="IdMemberRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Memberships">
+            <EntityTypeMapping TypeName="Model.Membership">
+              <MappingFragment StoreEntitySet="Membership">
+                <ScalarProperty Name="IdAddress" ColumnName="IdAddress" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IdMembership" ColumnName="IdMembership" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Model.Role">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
