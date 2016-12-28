@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NJet.Interservice, Version=1.0.0.0, Culture=neutral, PublicKeyToken=a50a726362792873, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\NJet.Interservice.1.0.0-beta-2\lib\net462\NJet.Interservice.dll</HintPath>
+      <HintPath>..\..\..\packages\NJet.Interservice.1.0.0-beta-4\lib\net462\NJet.Interservice.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -51,9 +51,6 @@
     <Folder Include="EntityFramework\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\Core Modules\Org.App.Core.Data\Org.App.Core.Data.csproj">
       <Project>{63263880-e62a-43f9-aaa4-fcf33768480e}</Project>
       <Name>Org.App.Core.Data</Name>
@@ -62,6 +59,9 @@
       <Project>{315662b8-dc07-44da-93b7-53d761d1e46b}</Project>
       <Name>Org.App.Core.Models</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

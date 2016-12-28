@@ -76,7 +76,10 @@ namespace NjetInterserviceWebApplication
             var configRef = NJet.Interservice.ServiceInjector.Configure(config =>
             {
                 config.AddServices((serviceConfig) =>{serviceConfig.Assemblies = new[] { "Org.App.BusinessService" }; })
-                      .AddDependentServices((serviceConfig) => { serviceConfig.Assemblies = new[] { "Org.App.DataService" }; });
+                      .AddDependencies((serviceConfig) => { serviceConfig.Assemblies = new[] { "Org.App.DataService" }; });
+
+                config.EnableStrictMode();
+
             });
         }
     }
