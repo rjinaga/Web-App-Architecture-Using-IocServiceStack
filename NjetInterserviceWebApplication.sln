@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{24D8120E-9E4
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core Modules", "Core Modules", "{0E847F54-35A9-46D7-81C3-F9FB3E439460}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Modules (Client Specific)", "Business Modules (Client Specific)", "{FE6227C2-D2E1-4144-9580-5787D71EFD72}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business Modules", "Business Modules", "{FE6227C2-D2E1-4144-9580-5787D71EFD72}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{EB353E27-36B0-4520-BBEB-A87DD9004263}"
 EndProject
