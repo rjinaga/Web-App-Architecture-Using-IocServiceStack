@@ -1,0 +1,94 @@
+{
+  "version": 2,
+  "exports": {
+    "Org.App.BusinessService/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.2",
+      "compile": {
+        "bin/Debug/Org.App.BusinessService.dll": {}
+      },
+      "runtime": {
+        "../../../packages/NJet.Interservice.1.0.0-beta-6/lib/net46/NJet.Interservice.dll": {},
+        "bin/Debug/Org.App.BusinessService.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Org.App.BusinessService.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "Org.App.DataService/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.2",
+      "compile": {
+        "bin/Debug/Org.App.Data.dll": {}
+      },
+      "runtime": {
+        "../../../packages/NJet.Interservice.1.0.0-beta-6/lib/net46/NJet.Interservice.dll": {},
+        "bin/Debug/Org.App.Data.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Org.App.Data.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "Org.App.Core.Business/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.2",
+      "compile": {
+        "bin/Debug/Org.App.Core.Business.dll": {}
+      },
+      "runtime": {
+        "../../../packages/NJet.Interservice.1.0.0-beta-6/lib/net46/NJet.Interservice.dll": {},
+        "bin/Debug/Org.App.Core.Business.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Org.App.Core.Business.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "Org.App.Core.Data/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.2",
+      "compile": {
+        "bin/Debug/Org.App.Core.Data.dll": {}
+      },
+      "runtime": {
+        "../../../packages/NJet.Interservice.1.0.0-beta-6/lib/net46/NJet.Interservice.dll": {},
+        "bin/Debug/Org.App.Core.Data.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Org.App.Core.Data.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    },
+    "Org.App.Core.Models/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.6.2",
+      "compile": {
+        "bin/Debug/Org.App.Core.Models.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/Org.App.Core.Models.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/Org.App.Core.Models.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}
