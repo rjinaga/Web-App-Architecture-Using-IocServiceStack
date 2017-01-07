@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-
-namespace NjetInterserviceWebApplication
+﻿namespace NjetInterserviceWebApplication
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
+    using IocServiceStack;
+
+
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -73,13 +71,20 @@ namespace NjetInterserviceWebApplication
 
         private void RegisterServices()
         {
-            var configRef = NInterservice.ServiceInjector.Configure(config =>
+            var configRef = IocServiceProvider.Configure(config =>
             {
-                config.AddServices((serviceConfig) =>{serviceConfig.Assemblies = new[] { "Org.App.BusinessService" }; })
-                      .AddDependencies((serviceConfig) => { serviceConfig.Assemblies = new[] { "Org.App.DataService" }; });
+                config.Services(opt =>
+                {
+                    opt.Assemblies = new[] { "Org.App.BusinessService" };
 
-                config.EnableStrictMode();
+                    opt.AddDependencies(dopt =>
+                    {
+                        dopt.Assemblies = new[] { "Org.App.DataService" };
+                    });
 
+                    opt.StrictMode = true;
+
+                });
             });
         }
     }

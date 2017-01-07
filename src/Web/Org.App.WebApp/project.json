@@ -18,7 +18,10 @@
     "Microsoft.Extensions.Logging.Debug": "1.0.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.0.0",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0",
-    "NInterservice": "1.0.0-beta-7" },
+    "IocServiceStack": "1.0.0-rc-1",
+    "Org.App.BusinessService": "1.0.0-*",
+    "Org.App.DataService": "1.0.0-*"
+  },
 
   "tools": {
     "BundlerMinifier.Core": "2.0.238",
@@ -27,16 +30,7 @@
   },
 
   "frameworks": {
-    "net462": {
-      "dependencies": {
-        "Org.App.BusinessService": {
-          "target": "project"
-        },
-        "Org.App.DataService": {
-          "target": "project"
-        }
-      }
-    }
+    "net462": {    }
   },
 
   "buildOptions": {
