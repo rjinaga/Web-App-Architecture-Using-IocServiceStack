@@ -1,4 +1,4 @@
-﻿namespace NjetInterserviceWebApplication
+﻿namespace Org.App.WebApp
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -63,7 +63,7 @@
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Customer}/{action=Index}/{id?}");
             });
 
             RegisterServices();
@@ -81,9 +81,7 @@
                     {
                         dopt.Assemblies = new[] { "Org.App.DataService" };
                     });
-
                     opt.StrictMode = true;
-
                 });
             });
         }

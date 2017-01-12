@@ -1,8 +1,10 @@
-﻿{
+{
   "version": "1.0.0-*",
 
   "dependencies": {
-    "IocServiceStack": "1.0.0-rc-1"
+    "IocServiceStack": "1.0.0-rc-final",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
+    "Org.App.Core.Data": "1.0.0-*"
   },
 
   "frameworks": {

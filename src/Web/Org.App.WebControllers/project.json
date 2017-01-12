@@ -1,13 +1,15 @@
-﻿{
+{
   "version": "1.0.0-*",
 
   "dependencies": {
-    "NETStandard.Library": "1.6.0"
+    "Microsoft.AspNetCore.Mvc.ViewFeatures": "1.0.1",
+    "Org.App.Core.Business": "1.0.0-*",
+    "Org.App.Core.Model": "1.0.0-*",
+    "FluentValidation": "6.2.1"
   },
 
   "frameworks": {
-    "netstandard1.6": {
-      "imports": "dnxcore50"
+    "net462": {
     }
   }
 }
