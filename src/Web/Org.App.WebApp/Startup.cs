@@ -80,10 +80,19 @@
                     opt.AddDependencies(dopt =>
                     {
                         dopt.Assemblies = new[] { "Org.App.DataService" };
+
+                        dopt.AddDependencies(ddopt =>
+                        {
+                        });
                     });
                     opt.StrictMode = true;
                 });
             });
+
+            
+
+
+
         }
     }
 }

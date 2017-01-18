@@ -19,17 +19,19 @@
 
         public void Add(Customer customer)
         {
-            _dbcontext.Add(customer);
+            _dbcontext.Customers.Add(customer);
         }
 
         public void Delete(Customer customer)
         {
-            _dbcontext.Remove(customer);
+            _dbcontext.Customers.Remove(customer);
         }
 
         public Customer GetCustomer(int customerId)
         {
-            return _dbcontext.Customers.Where(customer => customer.Id == customerId).FirstOrDefault();
+            return (from customer in _dbcontext.Customers
+            where customer.Id == customerId
+            select customer).SingleOrDefault();
         }
 
         public IEnumerable<Customer> GetCustomers()
@@ -39,7 +41,7 @@
 
         public void Update(Customer customer)
         {
-            _dbcontext.Update(customer);
+            _dbcontext.Customers.Update(customer);
         }
 
         public void SaveChanges()

@@ -17,6 +17,7 @@
         [HttpGet]
         public IActionResult Index()
         {
+            _customerService.Add(new Customer { FirstName = "Rajesh", LastName = "Jinaga", ZipCode = "12345" });
             return View();
         }
 

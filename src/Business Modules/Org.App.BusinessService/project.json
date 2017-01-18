@@ -2,7 +2,7 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "IocServiceStack": "1.0.0-rc-final",
+    "IocServiceStack": "1.0.0",
     "Org.App.Core.Business": "1.0.0-*",
     "Org.App.Core.Data": "1.0.0-*",
     "Org.App.Core.Model": "1.0.0-*",
