@@ -7,7 +7,6 @@
     using Microsoft.Extensions.Logging;
     using IocServiceStack;
 
-
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -73,26 +72,16 @@
         {
             var configRef = IocServiceProvider.Configure(config =>
             {
-                config.Services(opt =>
+                config.AddServices(service =>
                 {
-                    opt.Assemblies = new[] { "Org.App.BusinessService" };
-
-                    opt.AddDependencies(dopt =>
+                    service.Assemblies = new[] { "Org.App.BusinessService" };
+                    service.AddDependencies(data =>
                     {
-                        dopt.Assemblies = new[] { "Org.App.DataService" };
-
-                        dopt.AddDependencies(ddopt =>
-                        {
-                        });
+                        data.Assemblies = new[] { "Org.App.DataService" };
                     });
-                    opt.StrictMode = true;
+                    service.StrictMode = true;
                 });
             });
-
-            
-
-
-
         }
     }
 }
