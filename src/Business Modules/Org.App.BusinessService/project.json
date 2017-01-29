@@ -6,7 +6,7 @@
     "Org.App.Core.Data": "1.0.0-*",
     "Org.App.Core.Model": "1.0.0-*",
     "FluentValidation": "6.2.1",
-    "IocServiceStack": "1.1.0-beta-3"
+    "IocServiceStack": "1.1.0-rc-final"
   },
 
   "frameworks": {

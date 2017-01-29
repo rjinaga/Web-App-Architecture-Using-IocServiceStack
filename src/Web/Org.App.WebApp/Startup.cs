@@ -70,7 +70,7 @@
 
         private void RegisterServices()
         {
-            var configRef = IocServiceProvider.Configure(config =>
+            var configRef = IocServicelet.Configure(config =>
             {
                 config.AddServices(service =>
                 {
