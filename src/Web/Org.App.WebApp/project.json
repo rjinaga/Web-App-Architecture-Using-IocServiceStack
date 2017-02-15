@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "IocServiceStack": "1.1.0",
+    "IocServiceStack": "2.0.0-rc-1",
     "Microsoft.ApplicationInsights.AspNetCore": "1.0.0",
     "Microsoft.AspNetCore.Diagnostics": "1.0.0",
     "Microsoft.AspNetCore.Mvc": "1.0.1",
