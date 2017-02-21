@@ -2,7 +2,7 @@
   "version": "1.0.0-*",
 
   "dependencies": {
-    "IocServiceStack": "2.0.0-rc-final",
+    "IocServiceStack": "2.0.0",
     "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
     "Org.App.Core.Data": "1.0.0-*"
   },
